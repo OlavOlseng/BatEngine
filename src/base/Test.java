@@ -28,12 +28,13 @@ public class Test extends BatGame{
 	BatScreenManager scrnMan;
 	
 	public Test() {
-		super(60);
+		super(120);
 		this.setSize(new Dimension(WIDTH,HEIGHT));
  		
 		display = new BatDisplay(Test.WIDTH, Test.HEIGHT);
 		
 		scrnMan = new BatScreenManager();
+		scrnMan.pushScreen(new BombScreen());
 		scrnMan.pushScreen(new TestScreen(Color.BLUE,1.0));
 		scrnMan.pushScreen(new TestScreen(Color.GREEN,-0.8));
 		scrnMan.pushScreen(new TestScreen(Color.RED,-0.6));
@@ -44,14 +45,14 @@ public class Test extends BatGame{
 	@Override
 	public void onTick(double dt) {
 		update(dt);
-		render();
+		render(dt);
 	}
 	
 	public void update(double dt) {
 		scrnMan.update(dt);
 	}
 	
-	public synchronized void render() {
+	public synchronized void render(double dt) {
 		BufferStrategy bs = getBufferStrategy();
 		if(bs == null){
 			createBufferStrategy(3);
@@ -64,7 +65,8 @@ public class Test extends BatGame{
 		Graphics g = bs.getDrawGraphics();
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		g.drawImage(display.getGraphics(), 0, 0, WIDTH, HEIGHT, null);
-		
+		g.setColor(Color.PINK);
+		g.drawString("FPS: " + (1000/(int)dt) , 10, 10);
 		bs.show();	
 	}
 }

@@ -13,6 +13,7 @@ public abstract class BatGame extends Canvas implements Runnable{
 	
 	public void init(){
 		loop = new Thread(this);
+		loop.setPriority(Thread.MAX_PRIORITY);
 		loop.start();
 	}
 	
@@ -20,10 +21,12 @@ public abstract class BatGame extends Canvas implements Runnable{
 	public void run() {
 		double lastUpdate = System.currentTimeMillis();
 		double dt;
+		double nowTime;
 		double fraction = 1000.0/(double)fps;
 		
 		while(true){
-			dt = System.currentTimeMillis() - lastUpdate;
+			nowTime = System.currentTimeMillis(); 
+			dt = nowTime - lastUpdate;
 			
 			while(dt < fraction){
 				try{

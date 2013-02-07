@@ -61,4 +61,29 @@ public class BatBitmap {
             }
         }
     }
+	
+	public static BatBitmap clip(BatBitmap bm, int x0, int y0, int x1, int y1) {
+		int sw = bm.width;
+		int sh = bm.height;
+		if(x0 < 0) x0 = 0;
+		if(y0 < 0) y0 = 0;
+		if(x1 > sw) x1 = sw;
+		if(y1 > sh) y1 = sh;
+		
+		int tw = x1 - x0;
+		int th = y1 - y0;
+		
+		BatBitmap cm = new BatBitmap(tw, th);
+		
+		for (int yy = y0; yy < y0 + th; yy++) {
+			int sp = yy*sw + x0;
+			int tp = tw*(yy-y0);
+			for (int xx = 0; xx < tw; xx++) {
+				int col = bm.pixels[sp + xx];
+				cm.pixels[tp + xx] = col;
+			}
+		}
+		return cm;
+	}
+	
 }
