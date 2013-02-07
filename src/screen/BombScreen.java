@@ -1,6 +1,7 @@
 package screen;
 
 import resource.ImageLoader;
+import resource.TestLoader;
 import display.BatBitmap;
 import display.BatDisplay;
 
@@ -8,12 +9,16 @@ public class BombScreen extends BatScreen{
 	
 	double cumTime = 0;
 	BatBitmap bomb;
-	int x, y;
+	BatBitmap[][] mummy;
+	int cx, cy, mx, my;
+	int mumnum = 0;
+	
 	public BombScreen() {
-		super(false, false);
-		bomb = ImageLoader.load("/LOLCAT.png");
-		x = bomb.width/2; 
-		y = bomb.height/2 - 20;
+		super(true, false);
+		bomb = TestLoader.LOLCAT;
+		mummy = TestLoader.LARD;
+		cx = (800 - bomb.width)/2; 
+		cy = (600 - bomb.height)/2;
 	}
 
 	@Override
@@ -30,7 +35,12 @@ public class BombScreen extends BatScreen{
 
 	@Override
 	public void render(BatDisplay display) {
-		display.insert(bomb, x + Math.sin(cumTime)*5, y - Math.cos(cumTime)*5);
+		for (int x = 5; x < 800; x += 40){
+			for (int y = 5; y < 600; y+= 40){
+				display.insert(mummy[(int) ((cumTime/100)%(mummy.length))][(int) ((cumTime/(100*6))%(mummy[0].length))], x, y);
+			}
+		}
+		display.insert(bomb, cx + Math.sin(cumTime/10)*3, cy - Math.cos(cumTime/10)*3);
 	}
 
 	@Override
