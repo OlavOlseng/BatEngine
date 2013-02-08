@@ -4,6 +4,7 @@ import display.BatDisplay;
 
 public abstract class BatScreen {
 	
+	protected int xOffset, yOffset;
 	private boolean renderBlock;
 	private boolean updateBlock;
 	
@@ -20,6 +21,13 @@ public abstract class BatScreen {
 		return updateBlock;
 	}
 	
+	public void setOffset(int xOff, int yOff){
+		xOffset = xOff;
+		yOffset = yOff;
+	}
+	
+	public abstract boolean absorbedMouse();
+	public abstract boolean absorbedKeyPress();
 	public abstract boolean handleKeyboard();
 	public abstract boolean handleMouse();
 	public abstract void render(BatDisplay display);

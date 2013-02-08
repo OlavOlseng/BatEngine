@@ -24,7 +24,7 @@ public class DistScreen extends BatScreen{
 		Color c;
 		for(int i = 0; i < box.pixels.length; i++){
 			c = new Color(rand.nextInt(256), rand.nextInt(256),rand.nextInt(256));
-			if(c.getRGB() > -1500000){
+			if(c.getRGB() > -13000000){
 				box.pixels[i] = c.getRGB();
 			}else{
 				box.pixels[i] = 0;
@@ -49,6 +49,18 @@ public class DistScreen extends BatScreen{
 		// TODO Auto-generated method stub
 		display.insert(box, xOff, yOff);
 		
+	}
+
+	@Override
+	public boolean absorbedMouse() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean absorbedKeyPress() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	

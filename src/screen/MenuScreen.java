@@ -39,4 +39,16 @@ public class MenuScreen extends BatScreen {
 		
 	}
 
+	@Override
+	public boolean absorbedMouse() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean absorbedKeyPress() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

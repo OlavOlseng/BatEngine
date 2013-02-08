@@ -39,4 +39,16 @@ public class TestScreen extends BatScreen{
 		boxX = Math.sin(cumTime)*dir*300 + 350;
 		boxY = -Math.cos(cumTime)*dir*250 + 250;
 	}
+
+	@Override
+	public boolean absorbedMouse() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean absorbedKeyPress() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

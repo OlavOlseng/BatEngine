@@ -1,6 +1,5 @@
 package screen;
 
-import resource.ImageLoader;
 import resource.TestLoader;
 import display.BatBitmap;
 import display.BatDisplay;
@@ -14,7 +13,7 @@ public class BombScreen extends BatScreen{
 	int mumnum = 0;
 	
 	public BombScreen() {
-		super(true, false);
+		super(false, false);
 		bomb = TestLoader.LOLCAT;
 		mummy = TestLoader.LARD;
 		cx = (800 - bomb.width)/2; 
@@ -46,6 +45,18 @@ public class BombScreen extends BatScreen{
 	@Override
 	public void update(double dt) {
 		cumTime += dt;
+	}
+
+	@Override
+	public boolean absorbedMouse() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean absorbedKeyPress() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

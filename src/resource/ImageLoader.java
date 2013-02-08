@@ -29,6 +29,7 @@ public class ImageLoader {
 	protected static BatBitmap[][] loadSpriteSheet(String string, int spriteWidth, int spriteHeight) {
 		return loadSpriteSheet(string, spriteWidth, spriteHeight, 0, 0);
 	}
+	
 	protected static BatBitmap[][] loadSpriteSheet(String string, int spriteWidth, int spriteHeight, int bx, int by) {
         try {
             BufferedImage bi = ImageIO.read(BatGame.class.getResource(string));
