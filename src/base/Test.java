@@ -35,13 +35,6 @@ public class Test extends BatGame{
 		display = new BatDisplay(Test.WIDTH, Test.HEIGHT);
 		
 		scrnMan = new BatScreenManager();
-		scrnMan.pushScreen(new TestScreen(Color.BLUE,1.0));
-		scrnMan.pushScreen(new TestScreen(Color.GREEN,-0.8));
-		scrnMan.pushScreen(new TestScreen(Color.RED,-0.6));
-		scrnMan.pushScreen(new TestScreen(Color.YELLOW,0.7));
-		scrnMan.pushScreen(new BombScreen());
-		//scrnMan.pushScreen(new DistScreen());
-		//scrnMan.pushScreen(new MenuScreen());
 	}
 
 	@Override
