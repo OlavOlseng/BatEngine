@@ -2,6 +2,7 @@ package base;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.DisplayMode;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
@@ -28,7 +29,7 @@ public class Test extends BatGame{
 	BatScreenManager scrnMan;
 	
 	public Test() {
-		super(1000);
+		super(60);
 		this.setSize(new Dimension(WIDTH,HEIGHT));
  		
 		display = new BatDisplay(Test.WIDTH, Test.HEIGHT);
@@ -39,7 +40,7 @@ public class Test extends BatGame{
 		scrnMan.pushScreen(new TestScreen(Color.RED,-0.6));
 		scrnMan.pushScreen(new TestScreen(Color.YELLOW,0.7));
 		scrnMan.pushScreen(new BombScreen());
-		scrnMan.pushScreen(new DistScreen());
+		//scrnMan.pushScreen(new DistScreen());
 		//scrnMan.pushScreen(new MenuScreen());
 	}
 
