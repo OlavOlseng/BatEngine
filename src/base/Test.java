@@ -1,5 +1,7 @@
 package base;
 
+import gui.BatSquareButton;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.DisplayMode;
@@ -33,8 +35,11 @@ public class Test extends BatGame{
 		this.setSize(new Dimension(WIDTH,HEIGHT));
  		
 		display = new BatDisplay(Test.WIDTH, Test.HEIGHT);
-		
+		this.setCursor(getCursor().getDefaultCursor());
 		scrnMan = new BatScreenManager();
+		BatMenuScreen ms = new BatMenuScreen(false, false);
+		ms.addComponent(new BatSquareButton(200, 200));
+		scrnMan.pushScreen(ms);
 	}
 
 	@Override
@@ -45,6 +50,7 @@ public class Test extends BatGame{
 	
 	public void update(double dt) {
 		scrnMan.update(dt);
+		scrnMan.handleMousePress((int)this.getMousePosition().getX(), (int)this.getMousePosition().getY(), 0);
 	}
 	
 	public synchronized void render(double dt) {

@@ -1,18 +1,14 @@
 package gui;
 
 
-public interface BatButton {
+public interface BatButton extends BatComponent {
 	
-	public abstract void setPosition(int x, int y);
+	public void setPosition(int x, int y);
 	
-	public abstract int getX();
+	public void onPress();
 	
-	public abstract int getY();
+	public void onRelease();
 	
-	public abstract void onPress();
-	
-	public abstract void onRelease();
-	
-	public abstract void onHoverOver();
+	public void onHoverOver();
 	
 }

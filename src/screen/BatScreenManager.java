@@ -65,14 +65,15 @@ public class BatScreenManager {
 	
 	public void handleKeyPress(){
 		for (BatScreen scrn : toRender) {
-			if(scrn.handleKeyboard())
+			if(scrn.absorbedKeyPress())
 				return;
 		}
 	}
 	
-	public void handleMousePress(){
+	public void handleMousePress(int x, int y, int click){
 		for (BatScreen scrn : toRender) {
-			if(scrn.handleMouse())
+			scrn.handleMouse(x, y, click);
+			if(scrn.absorbedMouse())
 				return;
 		}
 	}

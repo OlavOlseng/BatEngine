@@ -28,8 +28,8 @@ public abstract class BatScreen {
 	
 	public abstract boolean absorbedMouse();
 	public abstract boolean absorbedKeyPress();
-	public abstract boolean handleKeyboard();
-	public abstract boolean handleMouse();
+	public abstract void handleKeyboard();
+	public abstract void handleMouse(int x, int y, int click);
 	public abstract void render(BatDisplay display);
 	public abstract void update(double dt);
 	
