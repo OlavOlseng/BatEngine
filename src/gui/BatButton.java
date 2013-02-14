@@ -1,32 +1,15 @@
 package gui;
 
-import math.BatTargetBox;
+import screen.Renderable;
 
-public class BatButton{
+public interface BatButton extends Renderable{
 	
-	protected BatTargetBox bb;
-	protected boolean pressed;
+	public abstract void setPosition(int x, int y);
 	
-	public BatButton(int width, int height){
-		pressed = false;
-		bb = new BatTargetBox(0, 0, width, height);
-	}
+	public abstract void onPress();
 	
-	public void setPosition(int x, int y){
-		bb.setPosition(x, y);
-	}
+	public abstract void onRelease();
 	
-	public void onPress(){
-		pressed = true;
-	}
-	
-	public void onRelease(){
-		pressed = false;
-	}
-	
-	public boolean contains(int x, int y){
-		return bb.contains(x, y);
-	}
-	
+	public abstract void onHoverOver();
 	
 }
