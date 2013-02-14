@@ -1,10 +1,13 @@
 package gui;
 
-import screen.Renderable;
 
-public interface BatButton extends Renderable{
+public interface BatButton {
 	
 	public abstract void setPosition(int x, int y);
+	
+	public abstract int getX();
+	
+	public abstract int getY();
 	
 	public abstract void onPress();
 	
