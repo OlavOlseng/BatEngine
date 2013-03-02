@@ -16,6 +16,7 @@ public class Test extends BatGame{
 	public static void main(String[] argv){
 		Test test = new Test();
 		JFrame frame = new JFrame("BatTest");
+//		frame.setUndecorated(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(test);
 		frame.pack();
@@ -66,7 +67,7 @@ public class Test extends BatGame{
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		g.drawImage(display.getGraphics(), 0, 0, WIDTH, HEIGHT, null);
 		g.setColor(Color.BLACK);
-		g.drawString("FPS: " + (1000/(int)dt) , 10, 10);
+		g.drawString("FPS: " + getFPS() , 10, 10);
 		bs.show();	
 	}
 }
