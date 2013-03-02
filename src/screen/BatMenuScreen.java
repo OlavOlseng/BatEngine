@@ -1,11 +1,11 @@
 package screen;
 
+import gfx.BatBitmap;
 import gui.BatButton;
 import gui.BatComponent;
 
 import java.util.ArrayList;
 
-import display.BatBitmap;
 import display.BatDisplay;
 
 public class BatMenuScreen extends BatScreen{
@@ -24,26 +24,12 @@ public class BatMenuScreen extends BatScreen{
 	}
 	
 	@Override
-	public boolean absorbedMouse() {
-		return true;
-	}
-
-	@Override
 	public boolean absorbedKeyPress() {
 		return true;
 	}
 
 	@Override
 	public void handleKeyboard() {
-	}
-
-	@Override
-	public void handleMouse(int x, int y, int click) {
-		for (BatButton c : components) {
-			if (c.contains(x, y)){
-				c.onHoverOver();
-			}
-		}
 	}
 
 	@Override
@@ -56,8 +42,10 @@ public class BatMenuScreen extends BatScreen{
 	}
 
 	@Override
-	public void update(double dt) {
-		// TODO Auto-generated method stub
+	public void update(float dt) {
+		for (BatButton c : components) {
+				c.update(dt);
+			}
 	}
 	
 }

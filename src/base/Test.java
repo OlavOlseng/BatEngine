@@ -3,6 +3,7 @@ package base;
 import gui.BatSquareButton;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.DisplayMode;
 import java.awt.Graphics;
@@ -22,6 +23,7 @@ public class Test extends BatGame{
 		frame.pack();
 		frame.setVisible(true);
 		test.init();
+		System.out.println("Loaded");
 	}
 	
 	public static int WIDTH = 800;
@@ -31,29 +33,30 @@ public class Test extends BatGame{
 	BatScreenManager scrnMan;
 	
 	public Test() {
-		super(60);
+		super(1000);
 		this.setSize(new Dimension(WIDTH,HEIGHT));
  		
 		display = new BatDisplay(Test.WIDTH, Test.HEIGHT);
-		this.setCursor(getCursor().getDefaultCursor());
+		this.setCursor(Cursor.getDefaultCursor());
 		scrnMan = new BatScreenManager();
 		BatMenuScreen ms = new BatMenuScreen(false, false);
 		ms.addComponent(new BatSquareButton(200, 200));
 		scrnMan.pushScreen(ms);
+		scrnMan.pushScreen(new TestScreen());
 	}
 
 	@Override
-	public void onTick(double dt) {
+	public void onTick(float dt) {
 		update(dt);
 		render(dt);
 	}
 	
-	public void update(double dt) {
+	public void update(float dt) {
 		scrnMan.update(dt);
-		scrnMan.handleMousePress((int)this.getMousePosition().getX(), (int)this.getMousePosition().getY(), 0);
+		//scrnMan.handleMousePress((int)this.getMousePosition().getX(), (int)this.getMousePosition().getY(), 0);
 	}
 	
-	public synchronized void render(double dt) {
+	public synchronized void render(float dt) {
 		BufferStrategy bs = getBufferStrategy();
 		if(bs == null){
 			createBufferStrategy(3);
@@ -64,9 +67,10 @@ public class Test extends BatGame{
 		scrnMan.render(display);
 		
 		Graphics g = bs.getDrawGraphics();
+		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		g.drawImage(display.getGraphics(), 0, 0, WIDTH, HEIGHT, null);
-		g.setColor(Color.PINK);
+		g.setColor(Color.BLACK);
 		g.drawString("FPS: " + (1000/(int)dt) , 10, 10);
 		bs.show();	
 	}

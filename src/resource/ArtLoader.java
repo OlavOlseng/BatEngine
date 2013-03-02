@@ -1,17 +1,18 @@
 package resource;
 
+import gfx.BatBitmap;
+
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import base.BatGame;
-import display.BatBitmap;
 
-public class ImageLoader {
+public class ArtLoader {
 	
-	protected static BatBitmap loadSprite(String string) {
+	protected static BatBitmap loadSprite(String path) {
         try {
-            BufferedImage bi = ImageIO.read(BatGame.class.getResource(string));
+            BufferedImage bi = ImageIO.read(BatGame.class.getResource(path));
 
             int w = bi.getWidth();
             int h = bi.getHeight();
@@ -26,8 +27,8 @@ public class ImageLoader {
         return null;
     }
 	
-	protected static BatBitmap[][] loadSpriteSheet(String string, int spriteWidth, int spriteHeight) {
-		return loadSpriteSheet(string, spriteWidth, spriteHeight, 0, 0);
+	protected static BatBitmap[][] loadSpriteSheet(String path, int spriteWidth, int spriteHeight) {
+		return loadSpriteSheet(path, spriteWidth, spriteHeight, 0, 0);
 	}
 	
 	protected static BatBitmap[][] loadSpriteSheet(String string, int spriteWidth, int spriteHeight, int bx, int by) {

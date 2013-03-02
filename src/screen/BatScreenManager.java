@@ -57,7 +57,7 @@ public class BatScreenManager {
 		}
 	}
 
-	public void update(double dt){
+	public void update(float dt){
 		for (BatScreen scrn : toUpdate) {
 			scrn.update(dt);
 		}
@@ -66,14 +66,6 @@ public class BatScreenManager {
 	public void handleKeyPress(){
 		for (BatScreen scrn : toRender) {
 			if(scrn.absorbedKeyPress())
-				return;
-		}
-	}
-	
-	public void handleMousePress(int x, int y, int click){
-		for (BatScreen scrn : toRender) {
-			scrn.handleMouse(x, y, click);
-			if(scrn.absorbedMouse())
 				return;
 		}
 	}

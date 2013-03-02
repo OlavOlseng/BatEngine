@@ -26,11 +26,9 @@ public abstract class BatScreen {
 		yOffset = yOff;
 	}
 	
-	public abstract boolean absorbedMouse();
 	public abstract boolean absorbedKeyPress();
 	public abstract void handleKeyboard();
-	public abstract void handleMouse(int x, int y, int click);
 	public abstract void render(BatDisplay display);
-	public abstract void update(double dt);
+	public abstract void update(float dt);
 	
 }

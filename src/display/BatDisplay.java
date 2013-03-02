@@ -1,5 +1,7 @@
 package display;
 
+import gfx.BatBitmap;
+
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 

@@ -1,8 +1,9 @@
 package gui;
 
+import gfx.BatBitmap;
+
 import java.awt.Color;
 
-import display.BatBitmap;
 import math.BatBox;
 
 public class BatSquareButton implements BatButton {
@@ -10,8 +11,10 @@ public class BatSquareButton implements BatButton {
 	protected BatBitmap image;
 	private BatBox bb;
 	private String label;
+	private boolean hovered, pressed;
 	
 	public BatSquareButton(int width, int height, String label) {
+		hovered = false;
 		image = new BatBitmap(width, height);
 		image.clear(Color.WHITE.getRGB());
 		bb = new BatBox(0, 0, width, height);
@@ -58,8 +61,7 @@ public class BatSquareButton implements BatButton {
 	
 	@Override
 	public void onHoverOver() {
-		System.out.println("getting hovered");
-		image.clear(Color.PINK.getRGB());
+		hovered = true;
 	}
 	
 	@Override
@@ -74,6 +76,16 @@ public class BatSquareButton implements BatButton {
 	@Override
 	public BatBitmap getGraphics() {
 		return image;
+	}
+
+	@Override
+	public void update(double dt) {
+		if (hovered) {
+			image.clear(Color.pink.getRGB());
+		} else {
+			image.clear(Color.white.getRGB());
+		}
+		hovered = false;
 	}
 	
 }

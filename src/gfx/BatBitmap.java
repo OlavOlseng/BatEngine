@@ -1,4 +1,4 @@
-package display;
+package gfx;
 
 import java.util.Arrays;
 

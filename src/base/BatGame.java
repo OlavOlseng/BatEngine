@@ -27,7 +27,6 @@ public abstract class BatGame extends Canvas implements Runnable{
 		while(true){
 			nowTime = System.currentTimeMillis(); 
 			dt = nowTime - lastUpdate;
-			
 			while(dt < fraction){
 				try{
 					Thread.sleep((long) (fraction - dt));
@@ -38,9 +37,9 @@ public abstract class BatGame extends Canvas implements Runnable{
 				dt = System.currentTimeMillis() - lastUpdate;
 			}
 			lastUpdate = System.currentTimeMillis();
-			onTick(dt);
+			onTick((float)dt);
 		}
 	}
 	
-	public abstract void onTick(double dt);
+	public abstract void onTick(float dt);
 }
