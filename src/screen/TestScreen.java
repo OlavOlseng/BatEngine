@@ -13,7 +13,7 @@ public class TestScreen extends BatScreen {
 		super(true, true);
 		// TODO Auto-generated constructor stub
 		lard = new BatAnimation(TestLoader.LARD, 15, BatAnimation.LOOP);
-		lard.setState(0);
+		lard.setState(10);
 		jump = new BatAnimation(TestLoader.SPLODE, 30, BatAnimation.LOOP);
 	}
 
@@ -34,7 +34,8 @@ public class TestScreen extends BatScreen {
 		// TODO Auto-generated method stub
 		
 		display.insert(lard.getGraphics(), 400, 300);
-		display.insert(jump.getGraphics(), 100, 100);
+		if(!jump.isFinished())
+			display.insert(jump.getGraphics(), 100, 100);
 		
 	}
 

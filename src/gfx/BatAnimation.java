@@ -32,6 +32,10 @@ public class BatAnimation {
 	}
 	
 	
+	public boolean isFinished() {
+		return finished;
+	}
+	
 	public void setFps(int fps) {
 		this.fps = 1000.0f/fps;
 	}
