@@ -2,9 +2,12 @@ package math;
 
 public class BatBox {
 	
-	private int w, h, x0, y0, x1, y1;
+	private float w, h, x0, y0, x1, y1;
+	private float xOff, yOff;
 	
-	public BatBox(int x0, int y0, int w, int h){
+	public BatBox(float x0, float y0, float w, float h){
+		this.yOff = 0;
+		this.xOff = 0;
 		this.x0 = x0;
 		this.y0 = y0;
 		this.w = w;
@@ -13,12 +16,17 @@ public class BatBox {
 	}
 	
 	public void setPosition(int x0, int y0){
-		this.x0 = x0;
-		this.y0 = y0;
+		this.x0 = x0 - xOff;
+		this.y0 = y0 - yOff;
 		updateBB();
 	}
 	
-	public void setSize(int w, int h){
+	public void setOffset(float xOff, float yOff){
+		this.xOff = xOff;
+		this.yOff = yOff;
+	}
+	
+	public void setSize(float w, float h){
 		this.w = w;
 		this.h = h;
 		updateBB();
@@ -29,7 +37,7 @@ public class BatBox {
 		this.y1 = y0 + h;
 	}
 	
-	public boolean contains(int x, int y) {
+	public boolean contains(float x, float y) {
 		return (x <= x1 && x >= x0 && y >= y0 && y <= y1);	
 	}
 
@@ -47,30 +55,37 @@ public class BatBox {
 				|| this.x1 < bb.x0
 				|| this.y0 > bb.y1
 				|| this.y1 < bb.y0 ));
-		
 	}
 
-	public int getWidth() {
+	public float getWidth() {
 		return w;
 	}
 
-	public int getHeight() {
+	public float getHeight() {
 		return h;
 	}
 
-	public int getX0() {
+	public float getX0() {
 		return x0;
 	}
 
-	public int getY0() {
+	public float getY0() {
 		return y0;
 	}
 	
-	public int getX1() {
+	public float getX1() {
 		return this.x1;
 	}
 	
-	public int getY1() {
+	public float getY1() {
 		return this.y1;
+	}
+	
+	public float getCenterX() {
+		return x0 + xOff;
+	}
+	
+	public float getCenterY() {
+		return y0 + yOff;
 	}
 }

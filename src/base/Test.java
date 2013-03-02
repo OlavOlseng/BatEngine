@@ -1,11 +1,9 @@
 package base;
 
-import gui.BatSquareButton;
 
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.DisplayMode;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
@@ -39,9 +37,6 @@ public class Test extends BatGame{
 		display = new BatDisplay(Test.WIDTH, Test.HEIGHT);
 		this.setCursor(Cursor.getDefaultCursor());
 		scrnMan = new BatScreenManager();
-		BatMenuScreen ms = new BatMenuScreen(false, false);
-		ms.addComponent(new BatSquareButton(200, 200));
-		scrnMan.pushScreen(ms);
 		scrnMan.pushScreen(new TestScreen());
 	}
 

@@ -11,6 +11,7 @@ public class BatAnimation {
 	
 	public static final int ONE_SHOT = 0;
 	public static final int LOOP = 1;
+	private float width, height;
 	
 	public BatAnimation(BatBitmap[][] spriteSheet, int fps, int animType){
 		this.states = spriteSheet[0].length;
@@ -21,6 +22,9 @@ public class BatAnimation {
 		delay = 0;
 		setFps(fps);
 		
+		width = sheet[0][0].width;
+		height = sheet[0][0].height;
+		
 		switch(animType) {
 		case 0:
 			oneShot = true;
@@ -30,7 +34,14 @@ public class BatAnimation {
 		
 		}
 	}
+
+	public float getHeight() {
+		return height;
+	}
 	
+	public float getWidth() {
+		return width;
+	}
 	
 	public boolean isFinished() {
 		return finished;
