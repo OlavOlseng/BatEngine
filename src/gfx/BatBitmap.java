@@ -4,8 +4,9 @@ import java.util.Arrays;
 
 public class BatBitmap {
 	
-	public int width, height;
+	public final int width, height;
 	public int[] pixels;
+	
 	
 	public BatBitmap(int width, int height){
 		this.width = width;

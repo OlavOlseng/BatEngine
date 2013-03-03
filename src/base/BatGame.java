@@ -6,7 +6,6 @@ public abstract class BatGame extends Canvas implements Runnable{
 	
 	Thread loop;
 	private int fps;
-	private int renderedFrames = 0;
 	private int currentFPS = 0;
 	private int frameCount = 0;
 	double lastCounterUpdate;
