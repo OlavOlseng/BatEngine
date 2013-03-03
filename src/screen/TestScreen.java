@@ -2,6 +2,7 @@ package screen;
 
 import resource.TestLoader;
 import gfx.BatAnimation;
+import gfx.BatAnimation.AnimType;
 import gfx.BatBitmap;
 import display.BatDisplay;
 
@@ -13,12 +14,13 @@ public class TestScreen extends BatScreen {
 	BatAnimation lard;
 	BatAnimation jump;
 	BatBitmap bomb;
+	
 	public TestScreen() {
 		super(true, true);
 		// TODO Auto-generated constructor stub
-		lard = new BatAnimation(TestLoader.LARD, 15, BatAnimation.LOOP);
+		lard = new BatAnimation(TestLoader.LARD, 15, AnimType.LOOP);
 		lard.setState(10);
-		jump = new BatAnimation(TestLoader.SPLODE, 30, BatAnimation.ONE_SHOT);
+		jump = new BatAnimation(TestLoader.SPLODE, 30, AnimType.ONE_SHOT);
 		bomb = TestLoader.BOMB;
 		
 		bx = 400;
@@ -40,17 +42,6 @@ public class TestScreen extends BatScreen {
 	@Override
 	public void render(BatDisplay display) {
 		// TODO Auto-generated method stub
-		
-		
-		display.insert(lard.getGraphics(), 400, 300);
-		
-		if(cumDt > 1000){
-			if(!jump.isFinished())
-				display.insert(jump.getGraphics(), bx - jump.getWidth()/2, by - jump.getHeight()/2);
-		}
-		else {
-			display.insert(bomb, bx - bomb.width/2, by - bomb.height/2);
-		}
 	}
 
 	@Override

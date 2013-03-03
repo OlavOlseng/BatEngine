@@ -49,7 +49,6 @@ public class Test extends BatGame{
 	
 	public void update(float dt) {
 		scrnMan.update(dt);
-		//scrnMan.handleMousePress((int)this.getMousePosition().getX(), (int)this.getMousePosition().getY(), 0);
 	}
 	
 	public synchronized void render(float dt) {

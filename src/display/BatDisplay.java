@@ -5,29 +5,26 @@ import gfx.BatBitmap;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 
-public class BatDisplay extends BatBitmap {
+import math.Vec2;
+
+public class BatDisplay{
 	public static int CLEAR_COLOR = 0; 
 	
 	protected BufferedImage display;
+	protected BatBitmap bmp; 
 	
 	public BatDisplay(int width, int height) {
-		super(width, height);
+		bmp = new BatBitmap(width, height);
 		this.display = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
-		this.pixels = ((DataBufferInt)display.getRaster().getDataBuffer()).getData();
+		this.bmp.pixels = ((DataBufferInt)display.getRaster().getDataBuffer()).getData();
 	}
 	
-	@Override
-	public void insert(BatBitmap b, int x, int y){
-		super.insert(b, x, y);
+	public void clear(int color) {
+		bmp.clear(color);
 	}
 	
-	public void insert(BatBitmap b, double x, double y){
-		super.insert(b, (int)x, (int)y);
-	}
-	
-	@Override
-	public void fill(int x, int y, int bw, int bh, int color){
-		super.fill(x, y, bw, bh, color);
+	public void insert(BatBitmap image, Vec2 position) {
+		bmp.insert(image, (int)position.x, (int)position.y);
 	}
 	
 	public BufferedImage getGraphics() {
@@ -35,6 +32,6 @@ public class BatDisplay extends BatBitmap {
 	}
 	
 	public int[] getPixels(){
-		return this.pixels;
+		return this.bmp.pixels;
 	}
 }

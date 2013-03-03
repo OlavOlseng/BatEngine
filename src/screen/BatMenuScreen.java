@@ -38,7 +38,7 @@ public class BatMenuScreen extends BatScreen{
 		for (BatButton b : components) {
 			screen.insert(b.getGraphics(), b.getX(), b.getY());
 		}
-		display.insert(this.screen, xOffset, yOffset);
+		display.insert(this.screen, offset);
 	}
 
 	@Override

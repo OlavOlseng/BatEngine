@@ -3,27 +3,24 @@ package math;
 public class BatBox {
 	
 	private float w, h, x0, y0, x1, y1;
-	private float xOff, yOff;
+	private Vec2 position, offset;
 	
-	public BatBox(float x0, float y0, float w, float h){
-		this.yOff = 0;
-		this.xOff = 0;
-		this.x0 = x0;
-		this.y0 = y0;
+	public BatBox(Vec2 position, float w, float h){
+		offset = new Vec2();
+		this.position = position;
 		this.w = w;
 		this.h = h;
 		updateBB();
 	}
 	
-	public void setPosition(int x0, int y0){
-		this.x0 = x0 - xOff;
-		this.y0 = y0 - yOff;
+	public void setPosition(Vec2 position){
+		this.position = position;
 		updateBB();
 	}
 	
-	public void setOffset(float xOff, float yOff){
-		this.xOff = xOff;
-		this.yOff = yOff;
+	public void setOffset(Vec2 offset){
+		this.offset = offset;
+		updateBB();
 	}
 	
 	public void setSize(float w, float h){
@@ -33,6 +30,8 @@ public class BatBox {
 	}
 	
 	private void updateBB(){
+		this.x0 = position.x - offset.x;
+		this.x0 = position.y - offset.y;
 		this.x1 = x0 + w;
 		this.y1 = y0 + h;
 	}
@@ -81,11 +80,11 @@ public class BatBox {
 		return this.y1;
 	}
 	
-	public float getCenterX() {
-		return x0 + xOff;
+	public Vec2 getPosition() {
+		return position;
 	}
 	
-	public float getCenterY() {
-		return y0 + yOff;
+	public Vec2 getOffset() {
+		return offset;
 	}
 }

@@ -1,46 +1,40 @@
 package gfx;
 
+import math.Vec2;
+
 public class BatAnimation {
-	protected int frames, states;
-	protected float delay;
-	protected BatBitmap[][] sheet;
+	
+	private int frames, states;
+	private float delay;
+	private BatBitmap[][] sheet;
 	private int currentFrame, currentState;
 	private float fps;
-	private boolean oneShot = false;
-	private boolean finished = false;
+	private boolean oneShot;
+	private boolean finished;
+
+	public enum AnimType {
+		ONE_SHOT, LOOP;
+	}
 	
-	public static final int ONE_SHOT = 0;
-	public static final int LOOP = 1;
-	private float width, height;
-	
-	public BatAnimation(BatBitmap[][] spriteSheet, int fps, int animType){
+	public BatAnimation(BatBitmap[][] spriteSheet, int fps, AnimType animType){
+		finished = false;
+		
 		this.states = spriteSheet[0].length;
 		this.frames = spriteSheet.length;
 		this.sheet = spriteSheet;
+		
 		currentFrame = 0;
 		currentState = 0;
 		delay = 0;
 		setFps(fps);
 		
-		width = sheet[0][0].width;
-		height = sheet[0][0].height;
-		
 		switch(animType) {
-		case 0:
+		case ONE_SHOT:
 			oneShot = true;
 			break;
-		case 1:
+		default:
 			oneShot = false;
-		
 		}
-	}
-
-	public float getHeight() {
-		return height;
-	}
-	
-	public float getWidth() {
-		return width;
 	}
 	
 	public boolean isFinished() {
@@ -64,11 +58,11 @@ public class BatAnimation {
 	}
 	
 	private void incFrame() {
-		currentFrame++;
+		if (!finished)
+			currentFrame++;
 		if(currentFrame >= frames) {
 			if (oneShot) {
 				finished = true;
-				currentFrame--;
 			} 
 			else {
 				currentFrame %= frames;
@@ -84,6 +78,4 @@ public class BatAnimation {
 		this.currentState = state;
 		this.currentFrame = 0;
 	}
-	
-	
 }

@@ -1,10 +1,11 @@
 package screen;
 
+import math.Vec2;
 import display.BatDisplay;
 
 public abstract class BatScreen {
 	
-	protected int xOffset, yOffset;
+	protected Vec2 offset;
 	private boolean renderBlock;
 	private boolean updateBlock;
 	
@@ -21,9 +22,8 @@ public abstract class BatScreen {
 		return updateBlock;
 	}
 	
-	public void setOffset(int xOff, int yOff){
-		xOffset = xOff;
-		yOffset = yOff;
+	public void setOffset(Vec2 offset){
+		this.offset = offset;
 	}
 	
 	public abstract boolean absorbedKeyPress();

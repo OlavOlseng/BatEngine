@@ -25,8 +25,8 @@ public class Vec2 {
 	
 	public void normalize() {
 		float len = length();
-		x = x/len;
-		y = y/len;
+		x /= len;
+		y /= len;
 	}
 
 	public void inverse() {
@@ -45,7 +45,6 @@ public class Vec2 {
 	public static Vec2 sub(Vec2 vec1, Vec2 vec2) {
 		return new Vec2(vec1.x - vec2.x, vec1.y - vec2.y);
 	}
-	
 	
 	public static float dot( Vec2 vec1, Vec2 vec2) {
 		return vec1.x * vec2.x + vec1.y * vec2.y;
