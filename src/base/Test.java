@@ -9,10 +9,12 @@ import java.awt.image.BufferStrategy;
 
 import javax.swing.JFrame;
 
+
 import screen.*;
 import display.*;
 
 public class Test extends BatGame{
+	
 	public static void main(String[] argv){
 		Test test = new Test();
 		JFrame frame = new JFrame("BatTest");
@@ -32,7 +34,7 @@ public class Test extends BatGame{
 	BatScreenManager scrnMan;
 	
 	public Test() {
-		super(1000);
+		super(10000);
 		this.setSize(new Dimension(WIDTH,HEIGHT));
  		
 		display = new BatDisplay(Test.WIDTH, Test.HEIGHT);
