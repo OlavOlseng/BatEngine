@@ -20,7 +20,7 @@ public class TestScreen extends BatScreen {
 	BatAnimation jump;
 	BatAnimation dude;
 	BatBitmap bomb;
-	Vec2 position;
+	Vec2 position, offset;
 	
 	
 	public TestScreen() {
@@ -28,10 +28,11 @@ public class TestScreen extends BatScreen {
 		// TODO Auto-generated constructor stub
 		lard = new BatAnimation(TestLoader.LARD, 15, AnimType.LOOP);
 		lard.setState(st);
-		jump = new BatAnimation(TestLoader.SPLODE, 60, AnimType.LOOP);
+		jump = new BatAnimation(TestLoader.SPLODE, 20, AnimType.ONE_SHOT);
 		bomb = TestLoader.BOMB;
-		dude = new BatAnimation(TestLoader.DUDE, 20, AnimType.LOOP);
+		dude = new BatAnimation(TestLoader.JUMP, 15, AnimType.LOOP);
 		position = new Vec2(400,400);
+		offset = new Vec2();
 	}
 
 	@Override
@@ -49,17 +50,17 @@ public class TestScreen extends BatScreen {
 	@Override
 	public void render(BatDisplay display) {
 		if(!jump.isFinished())
-			display.insert(jump.getGraphics(), position);
+			display.insert(jump.getGraphics(), position, offset);
 		
-		display.insert(dude.getGraphics(), new Vec2(400,300));
+		display.insert(dude.getGraphics(), new Vec2(400,300), offset);
 		Random rand = new Random();
 		
 		
-		display.insert(bomb, new Vec2(300, 200));
+		display.insert(bomb, new Vec2(300, 200), offset);
 		if(!lard.isFinished()){
 			float xx  = (float) (200 - Math.sin(cumDt/1000)*200);
 			float yy = (float) (200 + Math.cos(cumDt/1000)*200);
-			display.insert(lard.getGraphics(), new Vec2(xx,yy) );
+			display.insert(lard.getGraphics(), new Vec2(xx,yy), offset);
 		}
 	}
 
@@ -68,7 +69,8 @@ public class TestScreen extends BatScreen {
 		lard.stepAnimation(dt);
 		jump.stepAnimation(dt);
 		dude.stepAnimation(dt);
-		
+		offset.y  = (float) (200 - Math.sin(cumDt/1000)*200);
+		offset.x = (float) (200 + Math.cos(cumDt/1000)*200);
 		cumDt += dt;
 		
 	}
